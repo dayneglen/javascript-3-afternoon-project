@@ -52,8 +52,18 @@ var employees = [
 
 //Code Here
 
-
-
+const employeeUpdater = () => {
+  employees.forEach((employee) => {
+    for (let key in employee) {
+      if (employee[key] === 'Theo'){
+        delete employee[key];
+      } else if (employee[key] === 'Lorie'){
+        employee.department = 'HR';
+      }
+    }
+  });
+  return employees;
+}
 ////////// PROBLEM 2 //////////
 
 // Do not edit the code below.
@@ -70,7 +80,19 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 
 //Code Here
 
+// wasn't sure how to deal with the two 56s in a row, so this is what i came up with. Is there a better way to do this??
 
+const removeDuplicates = arr => {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i+ 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        arr.splice(j, arr[j + 1] === arr[j] ? 2 : 1);
+      }
+    }
+  }
+  console.log(arr);
+  return arr;
+}
 
 ////////// PROBLEM 3 //////////
 
@@ -97,8 +119,8 @@ var cat = {
 */
 
 //Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
+var grumpyActivity = cat.catFriends[0].activities[1];
+var fluffy2ndFriend = cat.catFriends[1].name;
 
 
 
@@ -140,6 +162,13 @@ var myCar = {
 
 //Code Here
 
+const recordCleaner = () => {
+  myCar.accidents.forEach((accident) => {
+    if (accident.atFaultForAccident === true) {
+      accident.atFaultForAccident = false;
+    }
+  })
+}
 
 
 ////////// PROBLEM 5 //////////
@@ -160,3 +189,11 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 //Code Here
 
 
+const looper = () => {
+  numsArr.forEach((arr) => {
+    arr.forEach((_, i, array) => {
+      array[i] % 2 === 0 ? arr[i] = 'even': array[i] = 'odd';
+    })
+  })
+  return numsArr;
+}
